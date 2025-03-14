@@ -34,7 +34,7 @@ app.use((req, res, next) => {
     }
 });
  */
-const allowedOrigins = ['http://127.0.0.1:3000/', 'http://localhost:3000/', 'http://127.0.0.1:3000/', 'https://localhost:3000/'];
+/* const allowedOrigins = ['http://127.0.0.1:3000/', 'http://localhost:3000/', 'http://127.0.0.1:3000/', 'https://localhost:3000/'];
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
@@ -43,7 +43,7 @@ app.use(cors({
             callback(new Error('CORS hatası: İzin verilmeyen alan adı'));
         }
     }
-}));
+})); */
 app.get('/api/maps-proxy', async (req, res) => {
     try {
         // Content-Type'ı açıkça belirtiyoruz
