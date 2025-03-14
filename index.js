@@ -46,7 +46,7 @@ app.use(cors({
 })); */
 app.get('/api/maps-proxy', async (req, res) => {
     try {
-        // Content-Type'ı açıkça belirtiyoruz
+        // Content-Type'ı açıkça belirtiyoruzaaa
         res.setHeader('Content-Type', 'application/javascript');
         
         const response = await axios.get('https://maps.googleapis.com/maps/api/js', {
