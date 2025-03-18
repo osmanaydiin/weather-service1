@@ -44,24 +44,10 @@ app.use(cors({
         }
     }
 }));
-app.get('/api/maps-proxy', async (req, res) => {
+app.get('/', async (req, res) => {
     try {
-        // Content-Type'ı açıkça belirtiyoruzaaa
-        res.setHeader('Content-Type', 'application/javascript');
-        
-        const response = await axios.get('https://maps.googleapis.com/maps/api/js', {
-            params: {
-                key: process.env.GOOGLE_MAPS_API_KEY,
-                libraries: 'places',
-                callback: '_googleMapsCallback'
-            },
-            // Response type'ı text olarak belirtiyoruz
-            responseType: 'text'
-        });
-        
-        res.send(response.data);
+        res.send('hello world');
     } catch (error) {
-        console.error('Google Maps API proxy hatası:', error);
         res.status(500).send(`console.error("Google Maps API yüklenemedi: ${error.message}")`);
     }
 });
