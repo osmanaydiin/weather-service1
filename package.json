@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && node index.js"
+    "start": "npm init -y && npm install && node index.js"
   },
   "repository": {
     "type": "git",
