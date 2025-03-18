@@ -56,7 +56,7 @@ app.use(cors({
     },
     credentials: true
 }));
-app.get('/api/maps-proxy', async (req, res) => {
+app.get('/hava-durumu', async (req, res) => {
     try {
         // Content-Type'ı açıkça belirtiyoruzaaa
         res.setHeader('Content-Type', 'application/javascript');
