@@ -1,7 +1,18 @@
+// .env dosyasını yükle (en başta olmalı)
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const app = express();
+
+// API anahtarını kontrol et
+const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+if (!GOOGLE_MAPS_API_KEY) {
+  console.warn('Uyarı: GOOGLE_MAPS_API_KEY environment variable tanımlanmamış');
+} else {
+  console.log('Google Maps API key başarıyla yüklendi');
+}
 
 // CORS middleware'ini ekleyin
 app.use(cors());
@@ -34,15 +45,16 @@ app.use((req, res, next) => {
     }
 });
  */
-const allowedOrigins = ['http://127.0.0.1:3000/', 'http://localhost:3000/', 'http://127.0.0.1:3000/', 'https://localhost:3000/'];
+const allowedOrigins = ['http://127.0.0.1:3000', 'http://localhost:3000', 'https://localhost:3000', 'https://weather-app-git-main-osmanaydiin.vercel.app', 'https://weather-app-osmanaydiin.vercel.app'];
 app.use(cors({
     origin: function (origin, callback) {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
             callback(new Error('CORS hatası: İzin verilmeyen alan adı'));
         }
-    }
+    },
+    credentials: true
 }));
 app.get('/api/maps-proxy', async (req, res) => {
     try {
@@ -51,7 +63,7 @@ app.get('/api/maps-proxy', async (req, res) => {
         
         const response = await axios.get('https://maps.googleapis.com/maps/api/js', {
             params: {
-                key: process.env.GOOGLE_MAPS_API_KEY,
+                key: GOOGLE_MAPS_API_KEY,
                 libraries: 'places',
                 callback: '_googleMapsCallback'
             },
