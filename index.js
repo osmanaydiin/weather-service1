@@ -45,7 +45,7 @@ app.use((req, res, next) => {
     }
 });
  */
-const allowedOrigins = ['http://127.0.0.1:3000', 'http://localhost:3000', 'https://localhost:3000', 'https://weather-app-git-main-osmanaydiin.vercel.app', 'https://weather-app-osmanaydiin.vercel.app'];
+const allowedOrigins = ['http://127.0.0.1:3001', 'http://localhost:3001', 'https://localhost:3001'];
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
@@ -87,6 +87,6 @@ app.get('/', async (req, res) => {
 });
 
 // Sunucunun çalıştığını kontrol etmek için
-app.listen(3001, () => {
+app.listen(3002, () => {
     console.log('Server running on port 3001');
 }); 
