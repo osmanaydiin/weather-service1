@@ -16,7 +16,7 @@ if (!GOOGLE_MAPS_API_KEY) {
 
 // CORS middleware'ini ekleyin
 app.use(cors());
-
+/* 
 const allowedOrigins = ['https://weather-theta-virid.vercel.app/'];
 app.use(cors({
     origin: function (origin, callback) {
@@ -27,7 +27,7 @@ app.use(cors({
         }
     },
     credentials: true
-}));
+})); */
 app.get('/hava-durumu', async (req, res) => {
     try {
         // Content-Type'ı açıkça belirtiyoruzaaa
